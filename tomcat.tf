@@ -8,13 +8,13 @@ resource "aws_instance" "myTomcatInstance" {
       }
     }
 
- resource "aws_security_group" "sonar-sg-2022" {
-      name        = "security_sonar_group_2022"
-      description = "security group for Sonar"
+ resource "aws_security_group" "tomcat-sg-2022" {
+      name        = "security_tomcat_group_2022"
+      description = "security group for Tomcat"
 
       ingress {
-        from_port   = 9000
-        to_port     = 9000
+        from_port   = 8080
+        to_port     = 8080
         protocol    = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
       }
@@ -35,6 +35,6 @@ resource "aws_instance" "myTomcatInstance" {
       }
 
       tags= {
-        Name = "security_sonar"
+        Name = "security_tomcat"
       }
     }
