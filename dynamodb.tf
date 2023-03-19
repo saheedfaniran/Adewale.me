@@ -38,7 +38,7 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
 
   tags = {
     Name        = "my-dynamo-db-table"
-    Environment = "production"
+    Environment = "development"
   }
 }
 
