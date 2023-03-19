@@ -1,11 +1,40 @@
 resource "aws_instance" "mySonarInstance" {
-      ami           = "ami-086df58ea1b1ad56a"
+      ami           = "ami-0ee23bfc74a881de5"
       key_name = var.key_name
       instance_type = "t2.micro"
-      vpc_security_group_ids = [sg-0f2005415981b6c3d]
+      vpc_security_group_ids = [aws_security_group.sonar-sg-2022.id]
       tags= {
         Name = "sonar_instance"
       }
     }
 
+ resource "aws_security_group" "sonar-sg-2022" {
+      name        = "security_sonar_group_2022"
+      description = "security group for Sonar"
 
+      ingress {
+        from_port   = 9000
+        to_port     = 9000
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+      }
+
+     ingress {
+        from_port   = 22
+        to_port     = 22
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+      }
+
+     # outbound from Sonar server
+      egress {
+        from_port   = 0
+        to_port     = 65535
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+      }
+
+      tags= {
+        Name = "security_sonar"
+      }
+    }

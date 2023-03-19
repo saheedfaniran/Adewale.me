@@ -1,11 +1,11 @@
 variable "aws_region" {
        description = "The AWS region to create things in." 
-       default     = "us-east-1" 
+       default     = "eu-west-2" 
 }
 
 variable "key_name" { 
     description = " SSH keys to connect to ec2 instance" 
-    default     =  "myJenkinsKey" 
+    default     =  "myMarch22Key" 
 }
 
 variable "instance_type" { 
@@ -15,7 +15,7 @@ variable "instance_type" {
 
 variable "security_group" { 
     description = "Name of security group" 
-    default     = "launch-wizard-1" 
+    default     = "jenkins-sgroup-dec-2021" 
 }
 
 variable "tag_name" { 
@@ -39,7 +39,7 @@ variable "acl" {
 variable "bucket_prefix" {
     type        = string
     description = "(required since we are not using 'bucket') Creates a unique bucket name beginning with the specified prefix"
-    default     = "my-aws-tf-state-bucket"
+    default     = "my-s3bucket-"
 }
 variable "tags" {
     type        = map
